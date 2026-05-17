@@ -28,7 +28,9 @@ from app.services.openclaw.device_identity import (
     sign_device_payload,
 )
 
-PROTOCOL_VERSION = 3
+PROTOCOL_MIN_VERSION = 3
+PROTOCOL_MAX_VERSION = 4
+
 # Resolved once at import time; matches the value written by the openclaw CLI
 # during pairing ("linux", "darwin", or "windows").
 _HOST_PLATFORM: str = _platform.system().lower()
@@ -331,8 +333,8 @@ def _build_connect_params(
     connect_mode = _resolve_connect_mode(config)
     use_control_ui = connect_mode == "control_ui"
     params: dict[str, Any] = {
-        "minProtocol": PROTOCOL_VERSION,
-        "maxProtocol": PROTOCOL_VERSION,
+        "minProtocol": PROTOCOL_MIN_VERSION,
+        "maxProtocol": PROTOCOL_MAX_VERSION,
         "role": role,
         "scopes": scopes,
         "client": {
