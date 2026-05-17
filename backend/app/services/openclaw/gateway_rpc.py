@@ -30,6 +30,7 @@ from app.services.openclaw.device_identity import (
 
 PROTOCOL_MIN_VERSION = 3
 PROTOCOL_MAX_VERSION = 4
+PROTOCOL_VERSION = PROTOCOL_MAX_VERSION
 
 # Resolved once at import time; matches the value written by the openclaw CLI
 # during pairing ("linux", "darwin", or "windows").
